@@ -5,19 +5,22 @@ namespace FiboPlaygroud
 {
     public class Fibonacci
     {
-        public int CalculateFibonacciNumber(int number)
+        private readonly Dictionary<int, ulong> _cachedFibonacciNumbers = new Dictionary<int, ulong> {{0, 0}, {1, 1}};
+
+        public ulong CalculateFibonacciNumber(int number)
         {
-            if (number == 0) return 0;
-            if (number == 1) return 1;
-            return CalculateFibonacciNumber(number - 1) + CalculateFibonacciNumber(number - 2);
+            if (_cachedFibonacciNumbers.ContainsKey(number)) return _cachedFibonacciNumbers[number];
+            var fibonacciNumber = CalculateFibonacciNumber(number - 1) + CalculateFibonacciNumber(number - 2);
+            _cachedFibonacciNumbers.Add(number, fibonacciNumber);
+            return fibonacciNumber;
         }
 
-        public int[] CalculateFibonacciNumbers(int count)
+        public ulong[] CalculateFibonacciNumbers(int count)
         {
             return CalculateFibonacci().Take(count).ToArray();
         }
 
-        public IEnumerable<int> CalculateFibonacci()
+        public IEnumerable<ulong> CalculateFibonacci()
         {
             var i = 0;
             while (true)

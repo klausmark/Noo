@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using FiboPlaygroud;
 
 namespace ThreadConsole
@@ -7,7 +8,12 @@ namespace ThreadConsole
     {
         static void Main(string[] args)
         {
-            ThreadedFibonacciExample.RunThreadedFibonacciExample(2, 30, new ConsoleLogger());
+            var fibonacci = new Fibonacci();
+            var sw = new Stopwatch();
+            sw.Start();
+            Console.WriteLine(fibonacci.CalculateFibonacciNumber(100));
+            sw.Stop();
+            Console.WriteLine($"Elapsed: {sw.Elapsed}");
             Console.ReadLine();
         }
     }

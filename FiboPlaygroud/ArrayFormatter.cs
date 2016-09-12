@@ -6,11 +6,11 @@ namespace FiboPlaygroud
 {
     public class ArrayFormatter
     {
-        private readonly int[] _objects;
+        private readonly ulong[] _objects;
         private readonly int _lineWidth;
 
         private StringBuilder _output;
-        public ArrayFormatter(int[] objects, int lineWidth)
+        public ArrayFormatter(ulong[] objects, int lineWidth)
         {
             _objects = objects;
             _lineWidth = lineWidth;
